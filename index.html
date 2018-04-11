@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>聊天程序</title>
     <script src="jquery-3.2.0.min.js">
-
     </script>
     <script>
-        $(function(){
+        $(function() {
             //给按钮绑定点击事件
-            $('#leftsendbtn').bind('click',sendmsgLeft);
-            $('#rightsendbtn').bind('click',sendmsgRight);
+            $('#leftsendbtn').bind('click', sendmsgLeft);
+            $('#rightsendbtn').bind('click', sendmsgRight);
 
             /*sendmsgLeft不要加小括号，不管点击不点击都会执行这个函数*/
+
             //点击左侧的发送
+
             function sendmsgLeft()
+
             {
                 //1先获取用户输入的内容
-                var txt=$('#lefttext').val();
-                if(txt.trim()!=='')
-                {//trim()方法是去除前后的空格
 
+                var txt = $('#lefttext').val();
 
+                if (txt.trim() !== '')
 
-                /*html()=innerHtml() text()=innerText() val()=value 表单才有value 容易弄混*/
-                //2生成我们的标签
-                var option=$('<option></option>');
-                //2.1生成的标签样式
-                var len=txt.length;//用户输入内容的长度
-                option.css('width',len*15+'px');
-                option.css('marginLeft',350+'px'-len*15-30+'px');
-                //2.2生成里面的内容
-                option.html(txt);
-                //3向页面追加生成的标签左侧
-                $('#leftcontent').append(option);
-                //4追加生成的标签右侧
-                var option1=$('<option></option>');
-                option1.css('width',len*15+'px');
-                option1.css('marginLeft','10px');
-                option1.html(txt);
-                $('#rightcontent').append(option1);
-                //5输入的内容生成我们的标签后需要清空文本
-                $('#lefttext').val('');
-                }
-
-            }
-            function sendmsgRight()
-            {
-                //1先获取用户输入的内容
-                var txt=$('#righttext').val();
-                if(txt.trim()!=='')
-                {//trim()方法是去除前后的空格
+                { //trim()方法是去除前后的空格
 
 
 
                     /*html()=innerHtml() text()=innerText() val()=value 表单才有value 容易弄混*/
                     //2生成我们的标签
-                    var option=$('<option></option>');
+                    var option = $('<option></option>');
+
                     //2.1生成的标签样式
-                    var len=txt.length;//用户输入内容的长度
-                    option.css('width',len*15+'px');
-                    option.css('marginLeft',350+'px'-len*15-30+'px');
+
+                    var len = txt.length; //用户输入内容的长度
+
+                    option.css('width', len * 15 + 'px');
+
+                    option.css('marginLeft', 350 + 'px' - len * 15 - 30 + 'px');
+
                     //2.2生成里面的内容
+
                     option.html(txt);
                     //3向页面追加生成的标签左侧
-                    $('#rightcontent').append(option);
+                    $('#leftcontent').append(option);
                     //4追加生成的标签右侧
-                    var option1=$('<option></option>');
-                    option1.css('width',len*15+'px');
-                    option1.css('marginLeft','10px');
+                    var option1 = $('<option></option>');
+                    option1.css('width', len * 15 + 'px');
+                    option1.css('marginLeft', '10px');
+                    option1.html(txt);
+                    $('#rightcontent').append(option1);
+                    //5输入的内容生成我们的标签后需要清空文本
+                    $('#lefttext').val('');
+                }
+
+            }
+
+            function sendmsgRight() {
+                //1先获取用户输入的内容。
+                var txt = $('#righttext').val();
+                if (txt.trim() !== '') { //trim()方法是去除前后的空格。
+
+
+
+                    /*html()=innerHtml() text()=innerText() val()=value 表单才有value 容易弄混*/
+                    //2生成我们的标签。
+                    var option = $('<option></option>');
+                    //2.1生成的标签样式。
+                    var len = txt.length; //用户输入内容的长度。
+                    option.css('width', len * 15 + 'px');
+                    option.css('marginLeft', 350 + 'px' - len * 15 - 30 + 'px');
+                    //2.2生成里面的内容。
+                    option.html(txt);
+                    //3向页面追加生成的标签左侧。
+                    $('#rightcontent').append(option);
+                    //4追加生成的标签右侧。
+                    var option1 = $('<option></option>');
+                    option1.css('width', len * 15 + 'px');
+                    option1.css('marginLeft', '10px');
                     option1.html(txt);
                     $('#leftcontent').append(option1);
                     //5输入的内容生成我们的标签后需要清空文本
@@ -76,14 +87,11 @@
                 }
 
             }
-            $(document).keydown(function(event)
-            {
-                if(event.keyCode==13)
-                {
-                    var text1=$('#lefttext').val();
-                    var text2=$('#righttext').val();
-                    if(text1.trim()!==' ' || text2.trim()!==' ')
-                    {
+            $(document).keydown(function(event) {
+                if (event.keyCode == 13) {
+                    var text1 = $('#lefttext').val();
+                    var text2 = $('#righttext').val();
+                    if (text1.trim() !== ' ' || text2.trim() !== ' ') {
                         sendmsgLeft();
                         sendmsgRight();
 
@@ -93,48 +101,49 @@
 
             //点击右侧的发送
         });
-
     </script>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
+
 <body>
-<div class="main">
-    <div class="box">
-        <div class="chat">
-            <div class="top">
-                <span>陈畅享</span>
-            </div>
-            <div class="content">
-                <select multiple="multiple" id="leftcontent">
+    <div class="main">
+        <div class="box">
+            <div class="chat">
+                <div class="top">
+                    <span>陈畅享</span>
+                </div>
+                <div class="content">
+                    <select multiple="multiple" id="leftcontent">
 
                 </select>
-            </div>
-            <div class="send">
-                <input type="text" id="lefttext" class="sendtext">
-                <input type="button" id="leftsendbtn" class="btn" value="发送">
+                </div>
+                <div class="send">
+                    <input type="text" id="lefttext" class="sendtext">
+                    <input type="button" id="leftsendbtn" class="btn" value="发送">
+                </div>
+
             </div>
 
         </div>
-
-    </div>
-    <div class="box">
-        <div class="chat">
-            <div class="top">
-                <span>陈国锋</span>
-            </div>
-            <div class="content">
-                <select multiple="multiple" id="rightcontent">
+        <div class="box">
+            <div class="chat">
+                <div class="top">
+                    <span>陈国锋</span>
+                </div>
+                <div class="content">
+                    <select multiple="multiple" id="rightcontent">
 
                 </select>
-            </div>
-            <div class="send">
-                <input type="text" id="righttext" class="sendtext">
-                <input type="button" id="rightsendbtn" class="btn" value="发送">
+                </div>
+                <div class="send">
+                    <input type="text" id="righttext" class="sendtext">
+                    <input type="button" id="rightsendbtn" class="btn" value="发送">
+                </div>
+
             </div>
 
         </div>
-
     </div>
-</div>
 </body>
+
 </html>
